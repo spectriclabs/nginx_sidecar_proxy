@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: confnginx
+data:
+  nginx.conf: |
+    worker_processes auto;
+    error_log error.log;
+    events { }
+    stream {
+      server {
+        listen 127.0.0.1:5678;
+        proxy_pass neverssl.com:80;
+      }
+    }
